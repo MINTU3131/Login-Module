@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "904095629143",
+    "project_id": "loginapp-34e4d",
+    "storage_bucket": "loginapp-34e4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904095629143:android:0ddb0593604520360a8812",
+        "android_client_info": {
+          "package_name": "com.mintusharma.loginapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904095629143-vhab4mlgm7ai5cqnq2l2slbl0016f33n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADmsliZTswyoSx6GM-LPzicdC2JikbV1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904095629143-vhab4mlgm7ai5cqnq2l2slbl0016f33n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
