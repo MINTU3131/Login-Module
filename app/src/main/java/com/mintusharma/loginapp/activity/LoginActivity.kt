@@ -8,10 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.auth.FirebaseAuth
 import com.mintusharma.loginapp.databinding.ActivityMainBinding
-import com.mintusharma.loginapp.repositories.LoginRepository
-import com.mintusharma.loginapp.viewmodels.LoginViewModelFactory
 import com.mintusharma.loginapp.viewmodels.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -24,9 +21,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val loginRepository = LoginRepository(FirebaseAuth.getInstance())
-        viewModel = ViewModelProvider(this, LoginViewModelFactory(loginRepository))
-            .get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         initView();
         observeLoginResult()

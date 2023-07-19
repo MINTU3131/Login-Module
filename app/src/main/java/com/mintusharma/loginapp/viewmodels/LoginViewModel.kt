@@ -6,12 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
-import com.mintusharma.loginapp.repositories.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel() : ViewModel() {
 
     private val _loginResult = MutableLiveData<Boolean>()
     val loginResult: LiveData<Boolean> get() = _loginResult
@@ -19,8 +18,14 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     fun login(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val result = loginRepository.login(email,password)
-                _loginResult.postValue(result)
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            _loginResult.postValue(task.isSuccessful)
+                        } else {
+                            Log.d("signInWithEmail:error", task.exception.toString())
+                        }
+                    }
             } catch (e: Exception) {
                 e.message?.let { Log.d("signInWithEmail:error", it) }
                 _loginResult.postValue(false)
